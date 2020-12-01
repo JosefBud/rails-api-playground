@@ -1,0 +1,30 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: rails_api_template_development
+
+test:
+  <<: *default
+  database: rails_api_template_test
+
+staging:
+  <<: *default
+  database: rails_api_template_staging
+  <% if Rails.application.credentials[:rds].present? %>
+  username: <%= Rails.application.credentials.rds[:username] %>
+  password: <%= Rails.application.credentials.rds[:password] %>
+  host: <%= Rails.application.credentials.rds[:host] %>
+  <% end %>
+
+production:
+  <<: *default
+  database: rails_api_template_production
+  <% if Rails.application.credentials[:rds].present? %>
+  username: <%= Rails.application.credentials.rds[:username] %>
+  password: <%= Rails.application.credentials.rds[:password] %>
+  host: <%= Rails.application.credentials.rds[:host] %>
+  <% end %>
