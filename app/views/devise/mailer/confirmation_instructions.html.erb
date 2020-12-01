@@ -1,0 +1,13 @@
+<p>Hi <%= @resource.first_name %> <%= @resource.last_name %>,</p>
+
+<p>Welcome to the ENTER NAME HERE app.</p>
+
+<p>To get started, please <%= link_to 'confirm your account', confirmation_url(@resource, confirmation_token: @token) %>.</p>
+
+<p>To learn more about the app, <%= link_to 'visit our website', 'https://example.domain' %>.
+  If you have any questions or problems, please email <%= mail_to 'support@example.domain', 'support@example.domain' %>.
+</p>
+
+<p>Sincerely,</p>
+
+<p>The ENTER NAME HERE Team</p>
